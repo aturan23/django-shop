@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block content %}
+
+    <div class="container center">
+
+        <div class="login-form text-center">
+            <form action="{% url 'register' %}" method="post">
+                <div class="text-center"><h2>Sign in</h2></div>
+                {% csrf_token %}
+                {% if form.errors %}
+                    <p>There is something wrong!</p>
+                {% endif %}
+                {{ form }}
+                <div class="text-right"><a href="" class="forgot">Forgot your password?</a></div>
+                <input type="submit" class="form-valid" value="Register">
+            </form>
+        </div>
+
+    </div>
+
+{% endblock %}

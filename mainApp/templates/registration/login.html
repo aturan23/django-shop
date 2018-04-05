@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+
+    <div class="container center">
+        {% if form.errors %}
+            <p>There is something wrong!</p>
+        {% endif %}
+        {% if next %}
+            <p>Hey you can't access this page</p>
+        {% endif %}
+        <div class="login-form text-center">
+            <form action="{% url 'login' %}" method="post">
+                <div class="text-center"><h2>Sign in</h2></div>
+                {% csrf_token %}
+                <h4>E-mail</h4>
+                {{ form.username }}
+                <h4>Password</h4>
+                {{ form.password }}
+                <div class="text-right"><a href="" class="forgot">Forgot your password?</a></div>
+                <input type="submit" class="form-valid" value="Sign in">
+                <input type="hidden" name="next" value="{{ next }}">
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
